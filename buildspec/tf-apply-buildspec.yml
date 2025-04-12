@@ -9,6 +9,4 @@ phases:
 
   build:
     commands:
-      - terraform apply -auto-approve \
-          -var="codestar_connection_arn=$CODESTAR_CONNECTION_ARN" \
-          -var="dockerhub_secret_arn=$DOCKERHUB_SECRET_ARN"
+      - terraform apply -auto-approve
