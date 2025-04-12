@@ -8,4 +8,5 @@ phases:
 
   build:
     commands:
-      - terraform apply -auto-approve
+      - terraform apply -auto-approve -var="codestar_connection_arn=$CODESTAR_CONNECTION_ARN"
+
