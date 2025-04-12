@@ -2,29 +2,13 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      python: 3.9
-    commands:
-      - echo "Installing Terraform..."
-      - |
-        curl -O \
-        https://releases.hashicorp.com/terraform/1.3.9/terraform_1.3.9_linux_amd64.zip
-      - unzip terraform_1.3.9_linux_amd64.zip
-      - mv terraform /usr/local/bin/
-      - terraform -version
-
   pre_build:
     commands:
-      - echo "Initializing Terraform..."
       - terraform init
-
-      - echo "Validating Terraform..."
       - terraform validate
 
   build:
     commands:
-      - echo "Running Terraform Apply..."
       - terraform apply -auto-approve \
           -var="codestar_connection_arn=$CODESTAR_CONNECTION_ARN" \
           -var="dockerhub_secret_arn=$DOCKERHUB_SECRET_ARN"
